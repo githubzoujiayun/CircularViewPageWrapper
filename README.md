@@ -5,7 +5,8 @@ ViewPager循环适配.
 
   use in Fragment:
   
-  private int mLastTabIndex = 0;
+  	private int mLastTabIndex = 0;
+  
 	private int mCurrentTabIndex = 0;
 	
 	// tabs
@@ -27,10 +28,12 @@ ViewPager循环适配.
 				R.string.title3,
 				R.string.title4 };
   
-  // the base ViewPagerAdapter/FragmentPagerAdapter
-  FragmentPagerAdapter adapter = new MyFragmentPagerAdapter(getActivity()
+  	// the base ViewPagerAdapter/FragmentPagerAdapter
+  
+  	FragmentPagerAdapter adapter = new MyFragmentPagerAdapter(getActivity()
 				.getSupportFragmentManager());
-  EnableChildScrollViewPager mViewPager = (EnableChildScrollViewPager) findViewById(R.id.childscrollable_viewpager);
+  	EnableChildScrollViewPager mViewPager = (EnableChildScrollViewPager)
+  			findViewById(R.id.childscrollable_viewpager);
 	mViewPager.setAdapter(adapter);
 	
 	ViewPager.OnPageChangeListener mPagerChangeListener = new OnPageChangeListener() {
@@ -54,17 +57,18 @@ ViewPager循环适配.
 		}
 	};
 	
-	  /**
-		 * 适配mPagerChangeListener以实现循环切页<br>
-		 * 
-		 * @author Steve
-		 * @date 2013/11/21
-		 */
-		mViewPager.setOnPageChangeListener(new CircularViewPageWrapper(
-				mPagerChangeListener, 0, mTabViewList.size() - 1));
+	 /**
+	 * 适配mPagerChangeListener以实现循环切页<br>
+	 * 
+	 * @author Steve
+	 * @date 2013/11/21
+	 */
+	mViewPager.setOnPageChangeListener(new CircularViewPageWrapper(
+			mPagerChangeListener, 0, mTabViewList.size() - 1));
 
-  // the method to indcate the current page for the current tab
-  private void showCurrentTab(int index) {
+  	// the method to indcate the current page for the current tab
+  	
+  	private void showCurrentTab(int index) {
 		mTabViewList.get(mLastTabIndex).setBackgroundResource(
 				R.drawable.bg_tag_last_focus);
 		((TextView) (mTabViewList.get(mLastTabIndex)))
@@ -76,7 +80,9 @@ ViewPager循环适配.
 		mViewPager.setCurrentItem(mCurrentTabIndex, true);
 	}
 	
+	
 	/* tab's OnClickListener */
+	
 	private class TabClickListener implements View.OnClickListener {
 		private int index = 0;
 
