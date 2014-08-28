@@ -53,9 +53,7 @@ public class CircularViewPageWrapper implements ViewPager.OnPageChangeListener{
 		int state;
 		
 		public PageState(int page, float rang, int state) {
-			this.page = page;
-			this.rang = rang;
-			this.state = state;
+			set(page, rang, state);
 		}
 		public void set(int page, float rang, int state) {
 			this.page = page;
