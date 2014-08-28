@@ -10,11 +10,14 @@ import android.support.v4.view.ViewPager;
  *	@describe :	
  */
 public class CircularViewPageWrapper implements ViewPager.OnPageChangeListener{
-	
+	//记录初始和滑动过程及结束的状态值
 	private PageState mStateBegin, mTmpState, mStateEnd;
 	private ViewPager.OnPageChangeListener mListener;
+	//是否在滑动
 	private boolean mScrolling = false;
+	//相当于是否触发onTouchDown
 	private boolean mFirstStateOnRetart = true;
+	//记录初始索引和最大索引
 	private int mStartIdx, mEndIdx;
 	
 	/**
@@ -86,13 +89,13 @@ public class CircularViewPageWrapper implements ViewPager.OnPageChangeListener{
 				// on the left or the right: beginPage = endPage.
 				if(mStateEnd.equals(mStateBegin)) {
 					if(mStateEnd.page == mStartIdx) {
-						// on the left
+						//left 向左滑动
 						onPageSelected(mEndIdx);
 					} else if(mStateEnd.page == mEndIdx) {
-						// on the right
+						// right向右滑动
 						onPageSelected(mStartIdx);
 					} else {
-						// middle; do nothing...
+						// 停留, hold; do nothing...
 					}
 					// clear old data...do nothing...
 				}
